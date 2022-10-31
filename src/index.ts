@@ -67,6 +67,8 @@ export default function <State>(
   }
 
   function subscriber(store) {
+    console.log("[vuex-p]subscriber store");
+    console.log(store);
     return function (handler) {
       return store.subscribe(handler);
     };
