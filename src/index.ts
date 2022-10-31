@@ -98,6 +98,14 @@ export default function <State>(
     if (!options.fetchBeforeUse) {
       savedState = fetchSavedState();
     }
+    console.log("[vuex-p]savedState");
+    console.log(savedState);
+
+    console.log("[vuex-p]store");
+    console.log(store);
+    console.log(store.state);
+    console.log("[vuex-p]options.overwrite");
+    console.log(options.overwrite);
 
     if (typeof savedState === "object" && savedState !== null) {
       store.replaceState(
