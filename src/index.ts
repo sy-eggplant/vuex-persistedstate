@@ -71,8 +71,9 @@ export default function <State>(
   const assertStorage =
     options.assertStorage ||
     (() => {
-      storage.setItem("@@", 1);
-      storage.removeItem("@@");
+      console.log("test");
+      storage.setItem("@@1", 1);
+      storage.removeItem("@@1");
     });
 
   assertStorage(storage);
@@ -107,6 +108,8 @@ export default function <State>(
     }
 
     (options.subscriber || subscriber)(store)(function (mutation, state) {
+      console.log("state");
+      console.log(state);
       if ((options.filter || filter)(mutation)) {
         (options.setState || setState)(
           key,
