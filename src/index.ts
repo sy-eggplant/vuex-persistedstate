@@ -112,6 +112,8 @@ export default function <State>(
       );
       (options.rehydrated || function () {})(store);
     }
+    console.log("[vuex-p]subscriber");
+    console.log(subscriber(store));
 
     (options.subscriber || subscriber)(store)(function (mutation, state) {
       console.log("[vuex-p]state");
