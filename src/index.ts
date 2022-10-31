@@ -55,6 +55,10 @@ export default function <State>(
   }
 
   function reducer(state, paths) {
+    console.log("reducer");
+    console.log(state);
+    console.log(paths);
+
     return Array.isArray(paths)
       ? paths.reduce(function (substate, path) {
           return shvl.set(substate, path, shvl.get(state, path));
@@ -71,9 +75,9 @@ export default function <State>(
   const assertStorage =
     options.assertStorage ||
     (() => {
-      console.log("test");
-      storage.setItem("@@1", 1);
-      storage.removeItem("@@1");
+      console.log("[vuex-p]test");
+      storage.setItem("@@", 1);
+      storage.removeItem("@@");
     });
 
   assertStorage(storage);
@@ -108,8 +112,17 @@ export default function <State>(
     }
 
     (options.subscriber || subscriber)(store)(function (mutation, state) {
-      console.log("state");
+      console.log("[vuex-p]state");
       console.log(state);
+      console.log("[vuex-p]options");
+      console.log(options);
+      console.log("[vuex-p]options.reducer");
+      console.log(options.reducer);
+      console.log("[vuex-p]reducer");
+      console.log(reducer);
+      console.log("[vuex-p]options.paths");
+      console.log(options.paths);
+
       if ((options.filter || filter)(mutation)) {
         (options.setState || setState)(
           key,
