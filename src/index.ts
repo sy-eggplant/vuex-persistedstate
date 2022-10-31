@@ -116,6 +116,14 @@ export default function <State>(
       console.log(state);
       console.log("[vuex-p]options");
       console.log(options);
+      console.log("[vuex-p]filter");
+      console.log(filter);
+      console.log("[vuex-p]options.filter");
+      console.log(options.filter);
+      console.log("[vuex-p]setState");
+      console.log(setState);
+      console.log("[vuex-p]options.setState");
+      console.log(options.setState);
       console.log("[vuex-p]options.reducer");
       console.log(options.reducer);
       console.log("[vuex-p]reducer");
@@ -124,6 +132,7 @@ export default function <State>(
       console.log(options.paths);
 
       if ((options.filter || filter)(mutation)) {
+        console.log("[vuex-p]in filter");
         (options.setState || setState)(
           key,
           (options.reducer || reducer)(state, options.paths),
