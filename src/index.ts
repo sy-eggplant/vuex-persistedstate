@@ -87,7 +87,15 @@ export default function <State>(
   assertStorage(storage);
 
   const fetchSavedState = () => (options.getState || getState)(key, storage);
-
+  console.log("[vuex-p]options.getState");
+  console.log(options.getState);
+  console.log("[vuex-p]getState");
+  console.log(getState);
+  console.log("[vuex-p]key");
+  console.log(key);
+  console.log("[vuex-p]storage");
+  console.log(storage);
+  
   let savedState;
 
   if (options.fetchBeforeUse) {
@@ -125,7 +133,7 @@ export default function <State>(
     console.log("[vuex-p]subscriber");
     console.log(subscriber(store));
 
-    (options.subscriber || subscriber)(store)(function (mutation, state) {
+    subscriber(store)(function (mutation, state) {
       console.log("[vuex-p]state");
       console.log(state);
       console.log("[vuex-p]options");
